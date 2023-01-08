@@ -35,6 +35,7 @@ Wrapper.LoginGIf = styled.div`
 `;
 Wrapper.Right = styled.div`
   flex: 1;
+  background-color: #fff;
 `;
 
 Wrapper.RightContainer = styled.div`
@@ -101,4 +102,27 @@ Wrapper.Button = styled.div`
   justify-content: center;
   color: #fff;
   cursor: pointer;
+
+  ${({ warningAnimation }) =>
+    warningAnimation &&
+    `
+    animation: rotate 0.7s ease-in-out both;
+  @keyframes rotate {
+    0% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+    25% {
+      transform: rotate(3deg) translate3d(0, 0, 0);
+    }
+    50% {
+      transform: rotate(-3deg) translate3d(0, 0, 0);
+    }
+    75% {
+      transform: rotate(1deg) translate3d(0, 0, 0);
+    }
+    100% {
+      transform: rotate(0deg) translate3d(0, 0, 0);
+    }
+  }
+  `}
 `;
