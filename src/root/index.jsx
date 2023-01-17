@@ -1,9 +1,9 @@
-import React from "react";
-import { Routes, Route } from "react-router-dom";
-import Login from "../components/Login";
-import Navbar from "../components/Navbar";
-import { RequireAuth } from "react-auth-kit";
-import Home from "../components/Home";
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import Login from '../components/Login';
+import Navbar from '../components/Navbar';
+import { RequireAuth } from 'react-auth-kit';
+import Home from '../components/Home';
 
 const Root = () => {
   return (
@@ -17,7 +17,7 @@ const Root = () => {
         }
       >
         <Route path="/" element={<Home />} />
-        <Route path="/flow/:idFlow" element={<Home />} />
+        <Route path="/flow/:idFlow" element={<h1>Hello from me</h1>} />
       </Route>
       <Route path="/login" element={<Login />} />
     </Routes>

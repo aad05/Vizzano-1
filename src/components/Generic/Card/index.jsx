@@ -1,9 +1,9 @@
-import React from "react";
-import { Wrapper } from "./style";
+import React from 'react';
+import { Wrapper } from './style';
 
-const Card = ({ title, img }) => {
+const Card = ({ title, img, onClick }) => {
   return (
-    <Wrapper>
+    <Wrapper onClick={onClick}>
       <Wrapper.Title>{title}</Wrapper.Title>
       <Wrapper.Img src={img} />
     </Wrapper>
