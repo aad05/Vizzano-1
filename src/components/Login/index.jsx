@@ -6,8 +6,10 @@ import { notification } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useSignIn } from "react-auth-kit";
 
 const Login = () => {
+  const signIn = useSignIn();
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({ fullName: "", password: "" });
   const [loading, setLoading] = useState(false);
@@ -31,6 +33,10 @@ const Login = () => {
   const handleChange = (e) =>
     setUserInfo({ ...userInfo, [e.target.name]: e.target.value });
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" || e.type === "click") onAuth();
+  };
+
   const onAuth = () => {
     if (!userInfo.fullName || !userInfo.password) {
       handleWarningAnimation();
@@ -49,9 +55,12 @@ const Login = () => {
     })
       .then((res) => {
         const { token, user } = res.data.data;
-        localStorage.setItem("token", token);
-        localStorage.setItem("fullName", user.fullName);
-        localStorage.setItem("isAuthed", true);
+        signIn({
+          token,
+          expiresIn: 3600,
+          tokenType: "Bearer",
+          authState: { fullName: user.fullName },
+        });
         setLoading(false);
         navigate("/");
       })
@@ -110,10 +119,11 @@ const Login = () => {
               onChange={handleChange}
               name="password"
               placeholder="Password"
+              onKeyDown={handleKeyDown}
             />
             <Wrapper.Button
               warningAnimation={playWarningAnimation}
-              onClick={onAuth}
+              onClick={handleKeyDown}
             >
               {loading ? <LoadingOutlined /> : "Login"}
             </Wrapper.Button>

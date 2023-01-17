@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div``;
+
+Wrapper.NavbarWrapper = styled.div`
   width: 100%;
   height: 70px;
   background-color: #fff;
 `;
+
 Wrapper.Container = styled.div`
   width: 80%;
   height: 100%;
@@ -27,4 +30,13 @@ Wrapper.Avatar = styled.div`
   color: #fff;
   border-radius: 50%;
   cursor: pointer;
+`;
+Wrapper.MenuItem = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`;
+Wrapper.MenuItemText = styled.div`
+  margin-left: 8px;
+  color: ${({ danger }) => (danger ? "red" : "#000")};
 `;
