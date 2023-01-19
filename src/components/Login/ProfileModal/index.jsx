@@ -6,7 +6,6 @@ import { useAuthUser } from "react-auth-kit";
 const ProfileModal = ({ open, onCancel }) => {
   const auth = useAuthUser();
   const { fullName } = auth();
-  console.log(fullName);
   return (
     <Modal
       title="Profile"

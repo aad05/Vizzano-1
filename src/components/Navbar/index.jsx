@@ -2,12 +2,11 @@ import React, { useState } from "react";
 import { Wrapper } from "./style";
 import logo from "../../assets/icons/navbarLogo.png";
 import { Dropdown } from "antd";
-import { IoMdSettings } from "react-icons/io";
-import { BiLogOut } from "react-icons/bi";
 import { useSignOut } from "react-auth-kit";
 import { warning } from "../Generic/Notification/ByModal";
 import ProfileModal from "../Login/ProfileModal";
 import { useNavigate, Outlet } from "react-router-dom";
+import { SettingOutlined, LogoutOutlined } from "@ant-design/icons";
 
 const Navbar = () => {
   const signOut = useSignOut();
@@ -19,7 +18,7 @@ const Navbar = () => {
     {
       label: (
         <Wrapper.MenuItem onClick={() => setShowProfileModal(true)}>
-          <IoMdSettings />
+          <SettingOutlined />
           <Wrapper.MenuItemText>Settings</Wrapper.MenuItemText>
         </Wrapper.MenuItem>
       ),
@@ -44,7 +43,7 @@ const Navbar = () => {
             });
           }}
         >
-          <BiLogOut style={{ color: "red" }} />
+          <LogoutOutlined style={{ color: "red" }} />
           <Wrapper.MenuItemText danger>Logout</Wrapper.MenuItemText>
         </Wrapper.MenuItem>
       ),
