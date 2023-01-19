@@ -4,6 +4,7 @@ import Login from '../components/Login';
 import Navbar from '../components/Navbar';
 import { RequireAuth } from 'react-auth-kit';
 import Home from '../components/Home';
+import Flow from '../components/Flow';
 
 const Root = () => {
   return (
@@ -17,7 +18,7 @@ const Root = () => {
         }
       >
         <Route path="/" element={<Home />} />
-        <Route path="/flow/:idFlow" element={<h1>Hello from me</h1>} />
+        <Route path="/flow/:idFlow" element={<Flow />} />
       </Route>
       <Route path="/login" element={<Login />} />
     </Routes>

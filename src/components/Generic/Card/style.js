@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   cursor: pointer;
@@ -22,6 +22,6 @@ Wrapper.Title = styled.div`
   color: rgb(0, 0, 0);
 `;
 Wrapper.Img = styled.img`
-  width: 133px;
+  width: 133px; //133px
   height: 192px;
 `;
