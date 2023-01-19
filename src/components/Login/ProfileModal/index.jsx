@@ -1,12 +1,11 @@
-import React from "react";
-import { Modal } from "antd";
-import { Wrapper } from "./style";
-import { useAuthUser } from "react-auth-kit";
+import React from 'react';
+import { Modal } from 'antd';
+import { Wrapper } from './style';
+import { useAuthUser } from 'react-auth-kit';
 
 const ProfileModal = ({ open, onCancel }) => {
   const auth = useAuthUser();
   const { fullName } = auth();
-  console.log(fullName);
   return (
     <Modal
       title="Profile"
