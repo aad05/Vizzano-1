@@ -1,5 +1,5 @@
 import React from 'react';
-import Addmembers from '../Addmembers';
+import Addmembers from './Addmembers';
 
 const Attendance = () => {
   // You can start coding from here! Jamshidbek || Muzaffar
