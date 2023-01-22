@@ -1,4 +1,4 @@
-import Attendance from "./Attendance";
+import Attendance from './Attendance';
 
 const FlowSection = () => {
   return (
