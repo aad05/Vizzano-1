@@ -9,6 +9,7 @@ import flow5 from "../../assets/images/flow5.svg";
 import store from "../../assets/images/store.png";
 import report from "../../assets/images/report.png";
 import { useNavigate } from "react-router-dom";
+import { Title } from "../Generic/Styles";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ const Home = () => {
 
   return (
     <Wrapper>
-      <Wrapper.Title>Flows</Wrapper.Title>
+      <Title>Flows</Title>
       <Wrapper.CardContainer>
         <Card
           onClick={() => navigateHandler(1)}
@@ -52,7 +53,7 @@ const Home = () => {
         />
       </Wrapper.CardContainer>
 
-      <Wrapper.Title>Store and Reports</Wrapper.Title>
+      <Title>Store and Reports</Title>
       <Wrapper.CardContainer>
         <Card title={"Store"} img={store} />
         <Card title={"Reports"} img={report} />
