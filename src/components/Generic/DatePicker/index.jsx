@@ -5,7 +5,13 @@ import { Title } from "../Styles";
 import { CaretLeftOutlined, CaretRightOutlined } from "@ant-design/icons";
 
 const DataPicker = ({ prefixTime, dateChange }) => {
-  const currentDate = new Date(+prefixTime);
+  const selectedDate = new Date(+prefixTime);
+  const settingDate = new Date();
+  const dateNow = new Date(
+    `${settingDate.getFullYear()}/${
+      settingDate.getMonth() + 1
+    }/${settingDate.getDate()}`
+  );
   const [showDate, setShowDate] = useState(true);
 
   const dateFormatter = (prefixTime) => {
@@ -18,12 +24,12 @@ const DataPicker = ({ prefixTime, dateChange }) => {
 
   const dayPlus = () => {
     dateChange(
-      new Date(currentDate.setDate(currentDate.getDate() + 1)).getTime()
+      new Date(selectedDate.setDate(selectedDate.getDate() + 1)).getTime()
     );
   };
   const dayMinus = () => {
     dateChange(
-      new Date(currentDate.setDate(currentDate.getDate() - 1)).getTime()
+      new Date(selectedDate.setDate(selectedDate.getDate() - 1)).getTime()
     );
   };
   const pickerChangeHandler = (date) => {
@@ -32,27 +38,47 @@ const DataPicker = ({ prefixTime, dateChange }) => {
 
   return (
     <Wrapper>
-      <Wrapper.Title>
-        <CaretLeftOutlined onClick={dayMinus} />
-      </Wrapper.Title>
+      {+process.env.REACT_APP_START_DATE < selectedDate.getTime() ? (
+        <Wrapper.Title>
+          <CaretLeftOutlined onClick={dayMinus} />
+        </Wrapper.Title>
+      ) : (
+        ""
+      )}
       <Title onClick={() => setShowDate(false)}>
         {showDate ? (
-          dateFormatter(currentDate.getTime())
+          dateFormatter(selectedDate.getTime())
         ) : (
           <DatePicker
             open={!showDate}
             onSelect={pickerChangeHandler}
             onOpenChange={() => setShowDate(true)}
             disabledDate={(e) => {
-              console.log(e.$d);
               const antDate = new Date(e.$d);
+              const customAntdDate = new Date(
+                `${antDate.getFullYear()}/${
+                  antDate.getMonth() + 1
+                }/${antDate.getDate()}`
+              );
+              if (
+                customAntdDate.getTime() >=
+                  +process.env.REACT_APP_ANT_DISABLED_START_DATE &&
+                customAntdDate.getTime() <= dateNow.getTime()
+              ) {
+                return false;
+              }
+              return true;
             }}
           />
         )}
       </Title>
-      <Wrapper.Title>
-        <CaretRightOutlined onClick={dayPlus} />
-      </Wrapper.Title>
+      {dateNow.getTime() > selectedDate.getTime() ? (
+        <Wrapper.Title>
+          <CaretRightOutlined onClick={dayPlus} />
+        </Wrapper.Title>
+      ) : (
+        ""
+      )}
     </Wrapper>
   );
 };
