@@ -3,7 +3,6 @@ import { Wrapper } from "./style";
 import { Title } from "../../Generic/Styles";
 import DatePicker from "../../Generic/DatePicker";
 import { useParams } from "react-router-dom";
-import { Button } from "antd";
 
 const Attendance = () => {
   const { prefixTime } = useParams();
@@ -14,11 +13,8 @@ const Attendance = () => {
     setPrefixTimeState(+prefixTime);
   };
 
-  //
-
   return (
     <Wrapper>
-      <Button type="primary">+ Add members</Button>
       <Title>Attendance</Title>
       <DatePicker prefixTime={prefixTimeState} dateChange={dateChangeHandler} />
     </Wrapper>
