@@ -23,10 +23,22 @@ const Flow = () => {
           title="Attendances"
           img={attandance}
         />
-        <Card isHome={true} title="Count Work" img={otk} />
+        <Card
+          isHome={true}
+          onClick={() =>
+            navigate(`/flow/${idFlow}/count-work/${date.getTime()}`)
+          }
+          title="Count Work"
+          img={otk}
+        />
       </Wrapper.CardContainer>
       <Wrapper.CardContainer>
-        <Card isHome={true} title="OTK" img={countWork} />
+        <Card
+          isHome={true}
+          onClick={() => navigate(`/flow/${idFlow}/otk/${date.getTime()}`)}
+          title="OTK"
+          img={countWork}
+        />
       </Wrapper.CardContainer>
     </Wrapper>
   );

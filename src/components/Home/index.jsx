@@ -29,7 +29,7 @@ const Home = () => {
         />
         <Card
           onClick={() => navigateHandler(2)}
-          title={"FLow № 2"}
+          title={"Flow № 2"}
           img={flow2}
         />
       </Wrapper.CardContainer>
@@ -55,8 +55,12 @@ const Home = () => {
 
       <Title>Store and Reports</Title>
       <Wrapper.CardContainer>
-        <Card title={"Store"} img={store} />
-        <Card title={"Reports"} img={report} />
+        <Card title={"Store"} onClick={() => navigate("/store")} img={store} />
+        <Card
+          title={"Reports"}
+          onClick={() => navigate("/report")}
+          img={report}
+        />
       </Wrapper.CardContainer>
     </Wrapper>
   );

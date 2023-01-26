@@ -55,6 +55,7 @@ const Login = () => {
     })
       .then((res) => {
         const { token, user } = res.data.data;
+        localStorage.setItem("token", token);
         signIn({
           token,
           expiresIn: 3600,

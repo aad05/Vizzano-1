@@ -27,6 +27,7 @@ const DataPicker = ({ prefixTime, dateChange }) => {
       new Date(selectedDate.setDate(selectedDate.getDate() + 1)).getTime()
     );
   };
+
   const dayMinus = () => {
     dateChange(
       new Date(selectedDate.setDate(selectedDate.getDate() - 1)).getTime()
