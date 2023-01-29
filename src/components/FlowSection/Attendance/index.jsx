@@ -6,6 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Table from "./Table";
 import axios from "axios";
 import { Button } from "antd";
+import TableLoading from "../../Generic/TableLoading";
 
 const Attendance = () => {
   const navigate = useNavigate();
@@ -42,7 +43,8 @@ const Attendance = () => {
       <Title>Attendance</Title>
       <DatePicker prefixTime={prefixTimeState} dateChange={dateChangeHandler} />
       <Button type="primary">+ Add worker</Button>
-      {loading ? "Loading..." : <Table data={data} />}
+      {loading ? <TableLoading count={15} /> : <Table data={data} />}
+
       <Button
         style={{ margin: "50px 0" }}
         onClick={() =>

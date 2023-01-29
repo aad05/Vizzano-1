@@ -7,7 +7,7 @@ const FlowSection = () => {
   const { typeFlow } = useParams();
   return (
     <>
-      {typeFlow === "attedance" ? (
+      {typeFlow === "attendance" ? (
         <Attendance />
       ) : typeFlow === "otk" ? (
         <OTK />

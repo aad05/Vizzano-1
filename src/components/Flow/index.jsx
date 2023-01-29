@@ -17,7 +17,7 @@ const Flow = () => {
       <Wrapper.CardContainer>
         <Card
           onClick={() =>
-            navigate(`/flow/${idFlow}/attedance/${date.getTime()}`)
+            navigate(`/flow/${idFlow}/attendance/${date.getTime()}`)
           }
           isHome={true}
           title="Attendances"
