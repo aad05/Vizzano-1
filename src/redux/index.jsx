@@ -1,5 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
+import otkSlice from "./otkSlice";
 
 export default configureStore({
-  reducer: {},
+  reducer: {
+    otk: otkSlice,
+  },
 });

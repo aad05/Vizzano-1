@@ -2,41 +2,41 @@ import React from "react";
 import { OrderedListOutlined } from "@ant-design/icons";
 import { TableWrapper } from "../../../Generic/Styles";
 
-const Table = () => {
-  const data = [
-    {
-      fake: 0,
-      fullName: "Asadbek Abduovoitov",
-      isCome: false,
-      price: 0,
-      things: 0,
-      _id: 0,
-    },
-    {
-      fake: 0,
-      fullName: "Muhammad Hamrayev",
-      isCome: true,
-      price: 0,
-      things: 0,
-      _id: 1,
-    },
-    {
-      fake: 0,
-      fullName: "Jamshidbek Hayitbayev",
-      isCome: true,
-      price: 0,
-      things: 0,
-      _id: 2,
-    },
-    {
-      fake: 0,
-      fullName: "Husan Bo'tayev",
-      isCome: false,
-      price: 0,
-      things: 0,
-      _id: 3,
-    },
-  ];
+const Table = ({ data }) => {
+  // const data = [
+  //   {
+  //     fake: 0,
+  //     fullName: "Asadbek Abduovoitov",
+  //     isCome: false,
+  //     price: 0,
+  //     things: 0,
+  //     _id: 0,
+  //   },
+  //   {
+  //     fake: 0,
+  //     fullName: "Muhammad Hamrayev",
+  //     isCome: true,
+  //     price: 0,
+  //     things: 0,
+  //     _id: 1,
+  //   },
+  //   {
+  //     fake: 0,
+  //     fullName: "Jamshidbek Hayitbayev",
+  //     isCome: true,
+  //     price: 0,
+  //     things: 0,
+  //     _id: 2,
+  //   },
+  //   {
+  //     fake: 0,
+  //     fullName: "Husan Bo'tayev",
+  //     isCome: false,
+  //     price: 0,
+  //     things: 0,
+  //     _id: 3,
+  //   },
+  // ];
 
   return (
     <TableWrapper>
@@ -52,7 +52,7 @@ const Table = () => {
           </TableWrapper.Tr>
         </TableWrapper.Thead>
         <TableWrapper.Tbody>
-          {data?.map((value, index) => (
+          {data?.data?.map((value, index) => (
             <TableWrapper.Tr key={value._id}>
               <TableWrapper.Td danger={!value.isCome}>
                 {index + 1}

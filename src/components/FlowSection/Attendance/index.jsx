@@ -20,6 +20,7 @@ const Attendance = () => {
   const dateChangeHandler = (prefixTime) => {
     setPrefixTimeState(+prefixTime);
   };
+
   useEffect(() => {
     setLoading(true);
     axios({
@@ -34,16 +35,35 @@ const Attendance = () => {
       },
     }).then((res) => {
       setLoading(false);
-      setData(res.data.data[0]);
+      if (res.data.data[0]) setData(res.data.data[0]);
+      else setData(res.data.data);
     });
-  }, []);
+  }, [prefixTimeState]);
+  const updateUser = (recValue) => {
+    setData({
+      ...data,
+      data: data.data.map((value) =>
+        value._id === recValue._id ? recValue : value
+      ),
+    });
+  };
+  const deleteUser = (recValue) => {
+    setData({
+      ...data,
+      data: data.data.filter((value) => value._id !== recValue._id),
+    });
+  };
 
   return (
     <Wrapper>
       <Title>Attendance</Title>
       <DatePicker prefixTime={prefixTimeState} dateChange={dateChangeHandler} />
       <Button type="primary">+ Add worker</Button>
-      {loading ? <TableLoading count={15} /> : <Table data={data} />}
+      {loading ? (
+        <TableLoading count={15} />
+      ) : (
+        <Table data={data} updateUser={updateUser} deleteUser={deleteUser} />
+      )}
 
       <Button
         style={{ margin: "50px 0" }}
